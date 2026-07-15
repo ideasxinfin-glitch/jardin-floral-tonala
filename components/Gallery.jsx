@@ -7,14 +7,14 @@ import Photo from './Photo';
 import { PHOTOS } from '@/lib/photos';
 
 const ITEMS = [
-  { img: PHOTOS.gal1, cat: 'arreglos', alt: 'Arreglo floral artificial en tonos rosados' },
-  { img: PHOTOS.gal2, cat: 'bodas', alt: 'Mesa de boda decorada con flores artificiales' },
-  { img: PHOTOS.gal3, cat: 'espacios', alt: 'Lobby de hotel con decoración floral premium' },
-  { img: PHOTOS.gal4, cat: 'arreglos', alt: 'Flores artificiales sobre mesa de madera' },
-  { img: PHOTOS.gal5, cat: 'arreglos', alt: 'Rosas blancas artificiales de toque natural' },
-  { img: PHOTOS.gal6, cat: 'espacios', alt: 'Sala decorada con guías florales' },
-  { img: PHOTOS.gal7, cat: 'bodas', alt: 'Detalle floral romántico para evento' },
-  { img: PHOTOS.gal8, cat: 'espacios', alt: 'Composición floral otoñal en interior' },
+  { img: PHOTOS.gal1, cat: 'arreglos', alt: 'Orquídeas artificiales premium en maceta de cerámica' },
+  { img: PHOTOS.gal2, cat: 'bodas', alt: 'Mesa de boda con centro de mesa floral y cristalería' },
+  { img: PHOTOS.gal3, cat: 'arreglos', alt: 'Rosas rojas y burgundy con gotas de rocío' },
+  { img: PHOTOS.gal4, cat: 'espacios', alt: 'Sala de estar con hortensias blancas en jarrón dorado' },
+  { img: PHOTOS.gal5, cat: 'arreglos', alt: 'Bouquet de girasoles y flores silvestres' },
+  { img: PHOTOS.gal6, cat: 'espacios', alt: 'Arreglo tropical con ave del paraíso en lobby de hotel' },
+  { img: PHOTOS.gal7, cat: 'bodas', alt: 'Arreglo floral azul y blanco para evento' },
+  { img: PHOTOS.gal8, cat: 'arreglos', alt: 'Composición floral artesanal premium' },
 ];
 
 const FILTERS = [

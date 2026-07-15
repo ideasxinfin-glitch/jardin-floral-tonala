@@ -20,22 +20,22 @@ export default function FinalCta() {
         style={{
           position: 'absolute',
           inset: 0,
-          background: 'linear-gradient(120deg, rgba(28,27,24,0.86), rgba(28,27,24,0.55))',
+          background: 'linear-gradient(120deg, rgba(28,27,24,0.7), rgba(28,27,24,0.4))',
         }}
       />
 
       <div className="container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
         <FadeUp>
-          <span className="eyebrow" style={{ color: 'var(--gold-soft)', justifyContent: 'center' }}>
+          <span className="eyebrow" style={{ color: '#E8D5A3', justifyContent: 'center', textShadow: '0 1px 6px rgba(0,0,0,0.3)' }}>
             Da el primer paso
           </span>
           <h2
             className="h-section"
-            style={{ color: 'var(--cream)', maxWidth: '18ch', margin: '1.2rem auto 1.4rem' }}
+            style={{ color: '#fff', maxWidth: '18ch', margin: '1.2rem auto 1.4rem', textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}
           >
             Tu espacio está a un mensaje de <em style={{ color: 'var(--gold-soft)', fontStyle: 'italic' }}>florecer</em>
           </h2>
-          <p className="lead" style={{ color: 'rgba(250,247,241,0.8)', margin: '0 auto 2.6rem' }}>
+          <p className="lead" style={{ color: 'rgba(255,255,255,0.92)', margin: '0 auto 2.6rem', textShadow: '0 1px 8px rgba(0,0,0,0.3)' }}>
             Escríbenos hoy y recibe asesoría personalizada, fotos reales y tu
             cotización el mismo día. Sin compromiso.
           </p>
@@ -53,7 +53,7 @@ export default function FinalCta() {
               Volver al catálogo
             </a>
           </div>
-          <p style={{ color: 'rgba(250,247,241,0.55)', fontSize: '0.85rem', marginTop: '1.6rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem', marginTop: '1.6rem', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
             📍 {ADDRESS} · 📱 +52 33 1726 4992
           </p>
         </FadeUp>

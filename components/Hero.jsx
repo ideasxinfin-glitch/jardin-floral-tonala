@@ -67,7 +67,7 @@ export default function Hero() {
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(100deg, rgba(28,27,24,0.62) 0%, rgba(28,27,24,0.35) 42%, rgba(28,27,24,0.05) 75%), linear-gradient(0deg, rgba(28,27,24,0.45) 0%, transparent 30%)',
+            'linear-gradient(100deg, rgba(28,27,24,0.68) 0%, rgba(28,27,24,0.42) 42%, rgba(28,27,24,0.1) 75%), linear-gradient(0deg, rgba(28,27,24,0.5) 0%, transparent 30%)',
         }}
       />
 
@@ -81,14 +81,14 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.35 }}
           className="eyebrow"
-          style={{ color: 'var(--gold-soft)' }}
+          style={{ color: '#E8D5A3', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
         >
           Florería Artificial Premium · Tonalá, Jalisco
         </motion.p>
 
         <motion.h1
           className="h-hero"
-          style={{ color: 'var(--cream)', maxWidth: '13ch', margin: '1.4rem 0 1.6rem' }}
+          style={{ color: '#fff', maxWidth: '13ch', margin: '1.4rem 0 1.6rem', textShadow: '0 2px 16px rgba(0,0,0,0.45)' }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: EASE, delay: 0.5 }}
@@ -100,7 +100,7 @@ export default function Hero() {
 
         <motion.p
           className="lead"
-          style={{ color: 'rgba(250,247,241,0.85)', maxWidth: '34rem' }}
+          style={{ color: 'rgba(255,255,255,0.92)', maxWidth: '34rem', textShadow: '0 1px 10px rgba(0,0,0,0.35)' }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: EASE, delay: 0.7 }}
