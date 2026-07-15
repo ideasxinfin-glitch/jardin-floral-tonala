@@ -42,6 +42,7 @@ export default function Photo({ src, alt, className = '', style, ...rest }) {
       alt={alt}
       loading="lazy"
       decoding="async"
+      referrerPolicy="no-referrer"
       onError={() => setFailed(true)}
       className={`cover ${className}`}
       style={style}
