@@ -288,6 +288,12 @@ h1, h2, h3, .display {
 @media (min-width: 860px) { .hide-mobile { display: initial; } }
 .hero-glass-cards { display: none !important; }
 @media (min-width: 860px) { .hero-glass-cards { display: grid !important; } }
+.hero-video-desktop { display: none !important; }
+.hero-video-mobile { display: block !important; }
+@media (min-width: 768px) {
+  .hero-video-desktop { display: block !important; }
+  .hero-video-mobile { display: none !important; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
