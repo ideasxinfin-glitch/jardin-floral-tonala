@@ -66,11 +66,11 @@ export const metadata = {
     url: 'https://jardinfloraltonala.mx',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Jardín Floral Tonalá — Arreglos florales artificiales premium',
-        type: 'image/jpeg',
+        type: 'image/png',
       },
     ],
   },
@@ -79,7 +79,7 @@ export const metadata = {
     title: 'Jardín Floral Tonalá — Flores Artificiales Premium',
     description:
       'Arreglos florales artificiales de lujo. Decoración para bodas, hoteles y hogares. Envíos a todo México.',
-    images: ['/og-image.jpg'],
+    images: ['/og-image.png'],
   },
   alternates: { canonical: '/' },
   robots: {
@@ -117,7 +117,7 @@ const jsonLdBusiness = {
   url: 'https://jardinfloraltonala.mx',
   telephone: '+52 33 2603 9200',
   email: 'contacto@jardinfloraltonala.mx',
-  image: 'https://jardinfloraltonala.mx/og-image.jpg',
+  image: 'https://jardinfloraltonala.mx/og-image.png',
   logo: 'https://jardinfloraltonala.mx/logo.png',
   address: {
     '@type': 'PostalAddress',
