@@ -46,13 +46,14 @@ export default function Hero() {
         background: '#1c1b18',
       }}
     >
-      {/* Video de fondo con loop */}
+      {/* Video desktop (landscape) */}
       <video
         autoPlay
         muted
         loop
         playsInline
         preload="auto"
+        className="hero-video-desktop"
         style={{
           position: 'absolute',
           inset: 0,
@@ -63,6 +64,26 @@ export default function Hero() {
         }}
       >
         <source src="/hero.mp4" type="video/mp4" />
+      </video>
+
+      {/* Video mobile (9:16) */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        className="hero-video-mobile"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.85,
+        }}
+      >
+        <source src="/hero-mobile.mp4" type="video/mp4" />
       </video>
 
       {/* Velo editorial — más fuerte para legibilidad */}
