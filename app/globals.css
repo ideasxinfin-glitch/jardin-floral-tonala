@@ -286,6 +286,8 @@ h1, h2, h3, .display {
 
 .hide-mobile { display: none; }
 @media (min-width: 860px) { .hide-mobile { display: initial; } }
+.hero-glass-cards { display: none !important; }
+@media (min-width: 860px) { .hero-glass-cards { display: grid !important; } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
