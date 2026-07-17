@@ -54,7 +54,7 @@ export default function FinalCta() {
             </a>
           </div>
           <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.85rem', marginTop: '1.6rem', textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
-            📍 {ADDRESS} · 📱 +52 33 1726 4992
+            📍 {ADDRESS} · 📱 +52 33 2603 9200
           </p>
         </FadeUp>
       </div>

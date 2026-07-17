@@ -8,8 +8,6 @@ import {
   useMotionValue,
   useSpring,
 } from 'framer-motion';
-import Photo from './Photo';
-import { PHOTOS } from '@/lib/photos';
 import { wa } from '@/lib/site';
 
 const EASE = [0.22, 1, 0.36, 1];
@@ -20,10 +18,8 @@ export default function Hero() {
     target: ref,
     offset: ['start start', 'end start'],
   });
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
-  // movimiento reactivo al mouse (sutil)
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 40, damping: 16 });
@@ -47,31 +43,39 @@ export default function Hero() {
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
-        background: 'var(--ivory)',
+        background: '#1c1b18',
       }}
     >
-      {/* Imagen cinematográfica con parallax */}
-      <motion.div style={{ position: 'absolute', inset: '-10% 0', y: imgY }}>
-        <Photo
-          src={PHOTOS.hero}
-          alt="Sala de lujo con luz natural y arreglo floral artificial premium de Jardín Floral Tonalá"
-          loading="eager"
-          fetchPriority="high"
-        />
-      </motion.div>
+      {/* Video de fondo con loop */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          opacity: 0.85,
+        }}
+      >
+        <source src="/hero.mp4" type="video/mp4" />
+      </video>
 
-      {/* Velo editorial */}
+      {/* Velo editorial — más fuerte para legibilidad */}
       <div
         aria-hidden="true"
         style={{
           position: 'absolute',
           inset: 0,
           background:
-            'linear-gradient(100deg, rgba(28,27,24,0.68) 0%, rgba(28,27,24,0.42) 42%, rgba(28,27,24,0.1) 75%), linear-gradient(0deg, rgba(28,27,24,0.5) 0%, transparent 30%)',
+            'linear-gradient(100deg, rgba(28,27,24,0.75) 0%, rgba(28,27,24,0.5) 42%, rgba(28,27,24,0.2) 75%), linear-gradient(0deg, rgba(28,27,24,0.6) 0%, transparent 35%)',
         }}
       />
 
-      {/* Pétalos flotantes */}
       <Petals />
 
       {/* Contenido */}
@@ -81,26 +85,35 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: EASE, delay: 0.35 }}
           className="eyebrow"
-          style={{ color: '#E8D5A3', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
+          style={{ color: '#E8D5A3', textShadow: '0 2px 12px rgba(0,0,0,0.6)' }}
         >
           Florería Artificial Premium · Tonalá, Jalisco
         </motion.p>
 
         <motion.h1
           className="h-hero"
-          style={{ color: '#fff', maxWidth: '13ch', margin: '1.4rem 0 1.6rem', textShadow: '0 2px 16px rgba(0,0,0,0.45)' }}
+          style={{
+            color: '#fff',
+            maxWidth: '13ch',
+            margin: '1.4rem 0 1.6rem',
+            textShadow: '0 3px 20px rgba(0,0,0,0.6), 0 1px 4px rgba(0,0,0,0.4)',
+          }}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: EASE, delay: 0.5 }}
         >
           Belleza que{' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--gold-soft)' }}>florece</em>{' '}
+          <em style={{ fontStyle: 'italic', color: '#E8D5A3' }}>florece</em>{' '}
           para siempre
         </motion.h1>
 
         <motion.p
           className="lead"
-          style={{ color: 'rgba(255,255,255,0.92)', maxWidth: '34rem', textShadow: '0 1px 10px rgba(0,0,0,0.35)' }}
+          style={{
+            color: 'rgba(255,255,255,0.95)',
+            maxWidth: '34rem',
+            textShadow: '0 2px 12px rgba(0,0,0,0.5)',
+          }}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, ease: EASE, delay: 0.7 }}
@@ -132,9 +145,9 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Tarjetas glass flotantes */}
+        {/* Glass cards — solo desktop */}
         <motion.div
-          className="hide-mobile"
+          className="hero-glass-cards"
           style={{
             position: 'absolute',
             right: 'clamp(0rem, 3vw, 3rem)',
@@ -177,7 +190,7 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Indicador de scroll */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -205,6 +218,7 @@ export default function Hero() {
           ↓
         </motion.div>
       </motion.div>
+
     </section>
   );
 }

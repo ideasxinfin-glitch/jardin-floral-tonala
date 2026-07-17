@@ -38,11 +38,22 @@ const NETWORKS = [
     handle: '@jardin_floral_tonala',
     url: SOCIAL.instagram,
     desc: 'Arreglos, decoraciones y guías florales en fotos.',
+    color: '#E1306C',
+    gradient: 'linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)',
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-        <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
-        <circle cx="12" cy="12" r="4.2" />
-        <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="igGrad" x1="0" y1="24" x2="24" y2="0">
+            <stop offset="0%" stopColor="#feda75" />
+            <stop offset="25%" stopColor="#fa7e1e" />
+            <stop offset="50%" stopColor="#d62976" />
+            <stop offset="75%" stopColor="#962fbf" />
+            <stop offset="100%" stopColor="#4f5bd5" />
+          </linearGradient>
+        </defs>
+        <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="url(#igGrad)" strokeWidth="1.8" />
+        <circle cx="12" cy="12" r="4.2" stroke="url(#igGrad)" strokeWidth="1.8" />
+        <circle cx="17.4" cy="6.6" r="1.2" fill="url(#igGrad)" />
       </svg>
     ),
   },
@@ -51,9 +62,13 @@ const NETWORKS = [
     handle: '@jardinfloral.tonala',
     url: SOCIAL.tiktok,
     desc: 'Videos de montajes y novedades de temporada.',
+    color: '#ff0050',
+    gradient: 'linear-gradient(135deg, #25F4EE, #FE2C55)',
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M16.6 2h-3v13.5a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V8.4a7.7 7.7 0 0 0 4.4 1.4V6.7A4.7 4.7 0 0 1 16.6 2z" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M16.6 2h-3v13.5a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.6a6 6 0 1 0 5 5.9V8.4a7.7 7.7 0 0 0 4.4 1.4V6.7A4.7 4.7 0 0 1 16.6 2z" fill="#25F4EE" />
+        <path d="M15.6 3h-3v13.5a2.9 2.9 0 1 1-2.2-2.8V10.6a6 6 0 1 0 5.2 5.9V9.4a7.7 7.7 0 0 0 4.4 1.4V7.7A4.7 4.7 0 0 1 15.6 3z" fill="#FE2C55" opacity="0.8" />
+        <path d="M16.1 2.5h-3v13.5a2.9 2.9 0 1 1-2.5-2.87V10.1a6 6 0 1 0 5.1 5.9V8.9a7.7 7.7 0 0 0 4.4 1.4V7.2A4.7 4.7 0 0 1 16.1 2.5z" fill="var(--ink)" />
       </svg>
     ),
   },
@@ -62,9 +77,12 @@ const NETWORKS = [
     handle: 'jardinfloral.tonala',
     url: SOCIAL.facebook,
     desc: 'Comunidad, promociones y atención directa.',
+    color: '#1877F2',
+    gradient: 'linear-gradient(135deg, #18acfe, #0163E0)',
     icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.2-1.5 1.5-1.5h1.4V4.9c-.2 0-1.1-.1-2.1-.1-2.1 0-3.6 1.3-3.6 3.7V11H8.3v3h2.4v7h2.8z" />
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.879V14.89h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.989C18.343 21.129 22 16.99 22 12c0-5.523-4.477-10-10-10z" fill="#1877F2" />
+        <path d="M15.893 14.89l.443-2.89h-2.773v-1.876c0-.79.387-1.562 1.63-1.562h1.26v-2.46s-1.144-.195-2.238-.195c-2.285 0-3.777 1.384-3.777 3.89V12h-2.54v2.89h2.54v6.989a10.075 10.075 0 003.124 0V14.89h2.33z" fill="#fff" />
       </svg>
     ),
   },
@@ -123,7 +141,7 @@ export default function Social() {
                     color: 'var(--ink)',
                   }}
                 >
-                  “{t.quote}”
+                  &ldquo;{t.quote}&rdquo;
                 </p>
                 <footer style={{ marginTop: '1.4rem' }}>
                   <strong style={{ fontWeight: 500 }}>{t.name}</strong>
@@ -164,11 +182,13 @@ export default function Social() {
         <Stagger className="grid-3">
           {NETWORKS.map((n) => (
             <Item key={n.name}>
-              <a
+              <motion.a
                 href={n.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="card"
+                whileHover={{ y: -6, boxShadow: '0 16px 40px -12px rgba(43,42,38,0.18)' }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
@@ -178,16 +198,25 @@ export default function Social() {
                   color: 'var(--charcoal)',
                 }}
               >
-                <span style={{ color: 'var(--sage-deep)' }}>{n.icon}</span>
+                <motion.span
+                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ width: 'fit-content' }}
+                >
+                  {n.icon}
+                </motion.span>
                 <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', color: 'var(--ink)' }}>
                   {n.name}
                 </span>
-                <span style={{ fontSize: '0.85rem', color: 'var(--gold)', letterSpacing: '0.04em' }}>{n.handle}</span>
+                <span style={{ fontSize: '0.85rem', color: n.color, letterSpacing: '0.04em', fontWeight: 500 }}>{n.handle}</span>
                 <span style={{ fontSize: '0.92rem', color: 'var(--muted)' }}>{n.desc}</span>
-                <span style={{ fontSize: '0.88rem', fontWeight: 500, color: 'var(--sage-deep)', marginTop: 'auto' }}>
+                <motion.span
+                  whileHover={{ x: 4 }}
+                  style={{ fontSize: '0.88rem', fontWeight: 500, color: 'var(--sage-deep)', marginTop: 'auto' }}
+                >
                   Visitar perfil →
-                </span>
-              </a>
+                </motion.span>
+              </motion.a>
             </Item>
           ))}
         </Stagger>

@@ -1,5 +1,7 @@
 import { wa, SOCIAL, ADDRESS } from '@/lib/site';
 
+const MAPS_URL = 'https://maps.app.goo.gl/CBMNLEgdfCgCwN8VA';
+
 const COLS = [
   {
     title: 'Productos',
@@ -45,22 +47,13 @@ export default function Footer() {
         >
           <div style={{ maxWidth: 300 }}>
             <p style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', marginBottom: '1.1rem' }}>
-              <span
-                aria-hidden="true"
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '1.4rem',
-                  width: 44,
-                  height: 44,
-                  display: 'grid',
-                  placeItems: 'center',
-                  border: '1px solid var(--gold)',
-                  borderRadius: '50%',
-                  color: 'var(--cream)',
-                }}
-              >
-                JF
-              </span>
+              <img
+                src="/logo.png"
+                alt="Jardín Floral"
+                width={44}
+                height={44}
+                style={{ borderRadius: '50%', objectFit: 'cover' }}
+              />
               <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', color: 'var(--cream)' }}>
                 Jardín Floral
                 <span style={{ display: 'block', fontFamily: 'var(--font-body)', fontSize: '0.62rem', letterSpacing: '0.42em', textTransform: 'uppercase', color: 'var(--gold-soft)' }}>
@@ -96,11 +89,32 @@ export default function Footer() {
               Contacto
             </h3>
             <ul style={{ display: 'grid', gap: '0.8rem', fontSize: '0.93rem' }}>
-              <li>📍 {ADDRESS}</li>
+              <li>
+                📍{' '}
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--cream)', textDecoration: 'underline', textUnderlineOffset: '3px', textDecorationColor: 'rgba(244,239,230,0.3)' }}
+                >
+                  {ADDRESS}
+                </a>
+              </li>
               <li>
                 📱{' '}
                 <a href={wa('Hola Jardín Floral 🌸')} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--cream)' }}>
-                  +52 33 1726 4992
+                  +52 33 2603 9200
+                </a>
+              </li>
+              <li>
+                🗺️{' '}
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: 'var(--gold-soft)', fontWeight: 500 }}
+                >
+                  Ver ubicación en Google Maps →
                 </a>
               </li>
               <li style={{ display: 'flex', gap: '1rem', marginTop: '0.4rem' }}>
