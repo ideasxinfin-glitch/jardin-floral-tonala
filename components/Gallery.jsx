@@ -3,29 +3,35 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FadeUp } from './Motion';
-import Photo from './Photo';
-import { PHOTOS } from '@/lib/photos';
+import { GALLERY_ROW_A, GALLERY_ROW_B } from '@/lib/photos';
 
-const ITEMS = [
-  { img: PHOTOS.gal1, cat: 'arreglos', alt: 'Orquídeas artificiales premium en maceta de cerámica' },
-  { img: PHOTOS.gal2, cat: 'bodas', alt: 'Mesa de boda con centro de mesa floral y cristalería' },
-  { img: PHOTOS.gal3, cat: 'arreglos', alt: 'Rosas rojas y burgundy con gotas de rocío' },
-  { img: PHOTOS.gal4, cat: 'espacios', alt: 'Sala de estar con hortensias blancas en jarrón dorado' },
-  { img: PHOTOS.gal5, cat: 'arreglos', alt: 'Bouquet de girasoles y flores silvestres' },
-  { img: PHOTOS.gal6, cat: 'espacios', alt: 'Arreglo tropical con ave del paraíso en lobby de hotel' },
-  { img: PHOTOS.gal7, cat: 'bodas', alt: 'Arreglo floral azul y blanco para evento' },
-  { img: PHOTOS.gal8, cat: 'arreglos', alt: 'Composición floral artesanal premium' },
-];
-
-const FILTERS = [
-  ['todos', 'Todo'],
-  ['arreglos', 'Arreglos'],
-  ['bodas', 'Bodas'],
-  ['espacios', 'Espacios'],
-];
+function MarqueeRow({ items, onOpen, reverse = false, duration = 55 }) {
+  // Duplicamos la lista para lograr el loop infinito sin salto visible
+  const doubled = [...items, ...items];
+  return (
+    <div className="marquee-mask">
+      <div
+        className={`marquee-track ${reverse ? 'marquee-reverse' : ''}`}
+        style={{ animationDuration: `${duration}s` }}
+      >
+        {doubled.map((item, i) => (
+          <button
+            key={`${item.src}-${i}`}
+            className="marquee-item img-frame"
+            onClick={() => onOpen(item)}
+            aria-label={`Ampliar: ${item.alt}`}
+            tabIndex={i < items.length ? 0 : -1}
+            aria-hidden={i >= items.length}
+          >
+            <img src={item.src} alt={i < items.length ? item.alt : ''} loading="lazy" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Gallery() {
-  const [filter, setFilter] = useState('todos');
   const [lightbox, setLightbox] = useState(null);
 
   useEffect(() => {
@@ -39,10 +45,8 @@ export default function Gallery() {
     };
   }, [lightbox]);
 
-  const visible = ITEMS.filter((i) => filter === 'todos' || i.cat === filter);
-
   return (
-    <section className="section" id="galeria">
+    <section className="section" id="galeria" style={{ overflow: 'hidden' }}>
       <div className="container">
         <div className="section-head center">
           <FadeUp>
@@ -50,65 +54,20 @@ export default function Gallery() {
             <h2 className="h-section">
               Espacios que ya <em className="gold-accent">florecen</em>
             </h2>
+            <p className="lead" style={{ margin: '1rem auto 0', maxWidth: '38rem' }}>
+              Trabajo real de nuestro taller: arreglos, montajes de eventos e
+              instalaciones en hogares y negocios. Toca cualquier foto para ampliarla.
+            </p>
           </FadeUp>
         </div>
-
-        <FadeUp>
-          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.6rem' }}>
-            {FILTERS.map(([key, label]) => (
-              <button
-                key={key}
-                onClick={() => setFilter(key)}
-                aria-pressed={filter === key}
-                style={{
-                  padding: '0.6rem 1.5rem',
-                  borderRadius: 999,
-                  fontSize: '0.88rem',
-                  fontWeight: 500,
-                  transition: 'all 0.4s var(--ease-luxe)',
-                  background: filter === key ? 'var(--sage-deep)' : 'var(--ivory)',
-                  color: filter === key ? 'var(--cream)' : 'var(--charcoal)',
-                }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-        </FadeUp>
-
-        <motion.div
-          layout
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(260px, 100%), 1fr))',
-            gap: '1.2rem',
-          }}
-        >
-          <AnimatePresence mode="popLayout">
-            {visible.map((item) => (
-              <motion.button
-                layout
-                key={item.img + item.cat}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.92 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                onClick={() => setLightbox(item)}
-                aria-label={`Ampliar: ${item.alt}`}
-                className="img-frame"
-                style={{
-                  borderRadius: 'var(--radius-md)',
-                  aspectRatio: '1',
-                  boxShadow: 'var(--shadow-card)',
-                  padding: 0,
-                }}
-              >
-                <Photo src={item.img} alt={item.alt} />
-              </motion.button>
-            ))}
-          </AnimatePresence>
-        </motion.div>
       </div>
+
+      <FadeUp>
+        <div style={{ display: 'grid', gap: '1.2rem' }}>
+          <MarqueeRow items={GALLERY_ROW_A} onOpen={setLightbox} duration={58} />
+          <MarqueeRow items={GALLERY_ROW_B} onOpen={setLightbox} reverse duration={64} />
+        </div>
+      </FadeUp>
 
       <AnimatePresence>
         {lightbox && (
@@ -139,8 +98,21 @@ export default function Gallery() {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               style={{ maxWidth: 'min(880px, 92vw)', width: '100%' }}
             >
-              <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', boxShadow: '0 40px 120px rgba(0,0,0,0.5)', aspectRatio: '4/3' }}>
-                <Photo src={lightbox.img.replace('w=900', 'w=1600')} alt={lightbox.alt} />
+              <div
+                style={{
+                  borderRadius: 'var(--radius-lg)',
+                  overflow: 'hidden',
+                  boxShadow: '0 40px 120px rgba(0,0,0,0.5)',
+                  display: 'grid',
+                  placeItems: 'center',
+                  background: '#111',
+                }}
+              >
+                <img
+                  src={lightbox.src}
+                  alt={lightbox.alt}
+                  style={{ width: '100%', maxHeight: '78vh', objectFit: 'contain', display: 'block' }}
+                />
               </div>
               <p style={{ color: 'rgba(250,247,241,0.75)', textAlign: 'center', marginTop: '1rem', fontSize: '0.92rem' }}>
                 {lightbox.alt} — toca para cerrar
